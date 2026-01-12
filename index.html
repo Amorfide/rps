@@ -8,6 +8,19 @@
 <body>
     <script>
         console.log("Hello World!")
+
+        function computerChoice(){
+            let cChoice = (Math.random()*3);
+            if(Math.floor(cChoice) == 0){
+                return "Rock";
+            }else if(Math.floor(cChoice) == 1){
+                return "Paper"
+            }else if(Math.floor(cChoice) == 2){
+                return "Scissors"
+            }
+        }
+        computerHand = computerChoice();
+        console.log("Computer chose " + computerHand);
     </script>
 </body>
 </html>
