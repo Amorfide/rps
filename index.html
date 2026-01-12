@@ -19,12 +19,12 @@
         }
 
         function humanChoice(){
-            let hChoice = prompt("What would you like to choose?: ")
-            if(hChoice === "R" || hChoice === "r" || hChoice === "Rock" || hChoice === "rock"){
+            let hChoice = prompt("What would you like to choose?: ").toLowerCase();
+            if(hChoice === "r" || hChoice === "rock"){
                 return "Rock";
-            }else if(hChoice === "P" || hChoice === "p" || hChoice === "Paper" || hChoice === "paper"){
+            }else if(hChoice === "p" || hChoice === "paper"){
                 return "Paper";
-            }else if(hChoice === "S" || hChoice === "s" || hChoice === "Scissors" || hChoice === "scissors"){
+            }else if(hChoice === "s" || hChoice === "scissors"){
                 return "Scissors";
             }
         }
@@ -37,7 +37,7 @@
                 console.log("Computer chose: " + computerHand);
                 console.log("You chose: " + humanHand);
 
-                if((computerHand === "Rock" && humanHand === "Rock") || (computerHand === "Paper" && humanHand === "Paper") || (computerHand === "Scissors" && humanHand === "Scissors")){
+                if(computerHand === humanHand){
                     console.log("This round is a draw! Noone gets a point");
                 }else if((computerHand === "Rock" && humanHand === "Scissors") || (computerHand === "Paper" && humanHand === "Rock") || (computerHand === "Scissors" && humanHand === "Paper")){
                     console.log("This round was won by the Computer! 1 Point is awarded to the Computer");
