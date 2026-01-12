@@ -7,8 +7,6 @@
 </head>
 <body>
     <script>
-        console.log("Hello World!")
-
         function computerChoice(){
             let cChoice = (Math.random()*3);
             if(Math.floor(cChoice) == 0){
@@ -31,10 +29,26 @@
             }
         }
 
+        humanScore = 0;
+        computerScore = 0;
+
         computerHand = computerChoice();
         humanHand = humanChoice();
+
         console.log("Computer chose: " + computerHand);
         console.log("You chose: " + humanHand);
+
+        if((computerHand == "Rock" && humanHand == "Rock") || (computerHand == "Paper" && humanHand == "Paper") || (computerHand == "Scissors" && humanHand == "Scissors")){
+            console.log("This round is a draw! Noone gets a point");
+        }else if((computerHand == "Rock" && humanHand == "Scissors") || (computerHand == "Paper" && humanHand == "Rock") || (computerHand == "Scissors" && humanHand == "Paper")){
+            console.log("This round was won by the Computer! 1 Point is awarded to the Computer");
+            computerScore += 1;
+        }else{
+            console.log("You won this round! 1 Point is awarded to you!");
+            humanScore += 1;
+        }
+    
+        console.log("The current score is: \n" + "Computer Score: " + computerScore +"\n" + "Your Score: " + humanScore);
     </script>
 </body>
 </html>
