@@ -19,8 +19,22 @@
                 return "Scissors"
             }
         }
+
+        function humanChoice(){
+            let hChoice = prompt("What would you like to choose?: ")
+            if(hChoice == "R" || hChoice == "r" || hChoice == "Rock" || hChoice == "rock"){
+                return "Rock";
+            }else if(hChoice == "P" || hChoice == "p" || hChoice == "Paper" || hChoice == "paper"){
+                return "Paper";
+            }else if(hChoice == "S" || hChoice == "s" || hChoice == "Scissors" || hChoice == "scissors"){
+                return "Scissors";
+            }
+        }
+
         computerHand = computerChoice();
-        console.log("Computer chose " + computerHand);
+        humanHand = humanChoice();
+        console.log("Computer chose: " + computerHand);
+        console.log("You chose: " + humanHand);
     </script>
 </body>
 </html>
