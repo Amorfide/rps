@@ -29,8 +29,11 @@
             }
         }
 
-        function playRound(numOfRounds){
-            for(let i=0; i< numOfRounds; i++){
+        function playRound(){
+
+        
+        // function playRound(numOfRounds){
+            // for(let i=0; i< numOfRounds; i++){
                 const computerHand = computerChoice();
                 const humanHand = humanChoice();
 
@@ -49,13 +52,13 @@
         
                 console.log("The current score is: \n" + "Computer Score: " + computerScore +"\n" + "Your Score: " + humanScore);
             }
-        }
-
+        
+            
         let humanScore = 0;
         let computerScore = 0;
-        let numOfRounds = parseInt(prompt("How many rounds do you wish to play?: "));
-
-        playRound(numOfRounds);
+        // let numOfRounds = parseInt(prompt("How many rounds do you wish to play?: "));
+        playRound();
+        // playRound(numOfRounds);
     </script>
 </body>
 </html>
