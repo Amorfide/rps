@@ -33,19 +33,7 @@
                 return "Scissors"
             }
         }
-
-        // old code
-        // function humanChoice(){
-        //     let hChoice = prompt("What would you like to choose?: ").toLowerCase();
-        //     if(hChoice === "r" || hChoice === "rock"){
-        //         return "Rock";
-        //     }else if(hChoice === "p" || hChoice === "paper"){
-        //         return "Paper";
-        //     }else if(hChoice === "s" || hChoice === "scissors"){
-        //         return "Scissors";
-        //     }
-        // }
-
+        
         function handleButtonClick(event) {
             const humanHand = event.target.textContent;
             playRound(humanHand);
@@ -63,10 +51,6 @@
 
         function playRound(humanHand){
 
-
-            // old code
-            // function playRound(numOfRounds){
-            // for(let i=0; i< numOfRounds; i++){
             const computerHand = computerChoice();
 
             chosenHands.innerHTML = (`The computer chose:  ${computerHand}<br>You chose: ${humanHand}`);
@@ -88,7 +72,6 @@
 
         }
 
-
         function endGame() {
                 buttons.forEach(button => {
                     button.removeEventListener("click", handleButtonClick);
@@ -102,12 +85,7 @@
                 results.appendChild(winner);
                 buttons.forEach(button => button.disabled = true);
         }
-        
 
-        // old code
-        // let numOfRounds = parseInt(prompt("How many rounds do you wish to play?: "));
-
-        // playRound(numOfRounds);
     </script>
 </body>
 </html>
