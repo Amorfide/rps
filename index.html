@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+
+    <button>Rock</button>
+    <button>Paper</button>
+    <button>Scissors</button>
+
     <script>
         function computerChoice(){
             const cChoice = (Math.random()*3);
@@ -18,24 +23,25 @@
             }
         }
 
-        function humanChoice(){
-            let hChoice = prompt("What would you like to choose?: ").toLowerCase();
-            if(hChoice === "r" || hChoice === "rock"){
-                return "Rock";
-            }else if(hChoice === "p" || hChoice === "paper"){
-                return "Paper";
-            }else if(hChoice === "s" || hChoice === "scissors"){
-                return "Scissors";
-            }
-        }
+        // old code
+        // function humanChoice(){
+        //     let hChoice = prompt("What would you like to choose?: ").toLowerCase();
+        //     if(hChoice === "r" || hChoice === "rock"){
+        //         return "Rock";
+        //     }else if(hChoice === "p" || hChoice === "paper"){
+        //         return "Paper";
+        //     }else if(hChoice === "s" || hChoice === "scissors"){
+        //         return "Scissors";
+        //     }
+        // }
 
-        function playRound(){
-
+        function playRound(clickedValue){
         
+            // old code
         // function playRound(numOfRounds){
             // for(let i=0; i< numOfRounds; i++){
                 const computerHand = computerChoice();
-                const humanHand = humanChoice();
+                const humanHand = clickedValue;
 
                 console.log("Computer chose: " + computerHand);
                 console.log("You chose: " + humanHand);
@@ -53,11 +59,18 @@
                 console.log("The current score is: \n" + "Computer Score: " + computerScore +"\n" + "Your Score: " + humanScore);
             }
         
-            
+        document.querySelectorAll("button").forEach(button => {
+            button.addEventListener("click", (event) => {
+                const clickedValue = event.target.textContent;
+                playRound(clickedValue);
+            });
+        });
+
         let humanScore = 0;
         let computerScore = 0;
+        // old code
         // let numOfRounds = parseInt(prompt("How many rounds do you wish to play?: "));
-        playRound();
+
         // playRound(numOfRounds);
     </script>
 </body>
