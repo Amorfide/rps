@@ -12,6 +12,17 @@
     <button>Scissors</button>
 
     <script>
+        let humanScore = 0;
+        let computerScore = 0;
+
+        const chosenHands = document.createElement("p");
+        const resultOutput = document.createElement("p");
+        const score = document.createElement("p");
+        const results = document.createElement("div");
+        const winner = document.createElement("p");
+        
+        document.body.appendChild(results);
+
         function computerChoice(){
             const cChoice = (Math.random()*3);
             if(Math.floor(cChoice) == 0){
@@ -35,39 +46,64 @@
         //     }
         // }
 
-        function playRound(clickedValue){
-        
-            // old code
-        // function playRound(numOfRounds){
-            // for(let i=0; i< numOfRounds; i++){
-                const computerHand = computerChoice();
-                const humanHand = clickedValue;
-
-                console.log("Computer chose: " + computerHand);
-                console.log("You chose: " + humanHand);
-
-                if(computerHand === humanHand){
-                    console.log("This round is a draw! Noone gets a point");
-                }else if((computerHand === "Rock" && humanHand === "Scissors") || (computerHand === "Paper" && humanHand === "Rock") || (computerHand === "Scissors" && humanHand === "Paper")){
-                    console.log("This round was won by the Computer! 1 Point is awarded to the Computer");
-                    computerScore += 1;
-                }else{
-                    console.log("You won this round! 1 Point is awarded to you!");
-                    humanScore += 1;
-                }
-        
-                console.log("The current score is: \n" + "Computer Score: " + computerScore +"\n" + "Your Score: " + humanScore);
+        function handleButtonClick(event) {
+            const humanHand = event.target.textContent;
+            playRound(humanHand);
+            
+            if(humanScore === 5 || computerScore === 5){
+                endGame();
             }
-        
-        document.querySelectorAll("button").forEach(button => {
-            button.addEventListener("click", (event) => {
-                const clickedValue = event.target.textContent;
-                playRound(clickedValue);
-            });
+        }
+
+        const buttons = document.querySelectorAll("button");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", handleButtonClick);
         });
 
-        let humanScore = 0;
-        let computerScore = 0;
+        function playRound(humanHand){
+
+
+            // old code
+            // function playRound(numOfRounds){
+            // for(let i=0; i< numOfRounds; i++){
+            const computerHand = computerChoice();
+
+            chosenHands.innerHTML = (`The computer chose:  ${computerHand}<br>You chose: ${humanHand}`);
+            results.appendChild(chosenHands);
+
+            if(computerHand === humanHand){
+                resultOutput.textContent = ("This round is a draw! Noone gets a point");
+            }else if((computerHand === "Rock" && humanHand === "Scissors") || (computerHand === "Paper" && humanHand === "Rock") || (computerHand === "Scissors" && humanHand === "Paper")){
+                resultOutput.textContent = ("This round was won by the Computer!");
+                computerScore += 1;
+            }else{
+                humanScore += 1;
+            }
+
+            score.innerHTML = (`The current score is: <br> Computer Score: ${computerScore} <br> Your Score: ${humanScore}`);
+
+            results.appendChild(resultOutput);
+            results.appendChild(score);
+
+        }
+
+
+        function endGame() {
+                buttons.forEach(button => {
+                    button.removeEventListener("click", handleButtonClick);
+                });
+
+                if(humanScore > computerScore){
+                    winner.textContent = (`You have won the game with a score of: ${humanScore}`);
+                }else{
+                    winner.textContent = (`Computer has won the game with a score of: ${computerScore}`);
+                }
+                results.appendChild(winner);
+                buttons.forEach(button => button.disabled = true);
+        }
+        
+
         // old code
         // let numOfRounds = parseInt(prompt("How many rounds do you wish to play?: "));
 
